@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>komal vaidya | Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="logo">kv<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Frontend Developer</p>
+    <h1>Building clean, fast<br>web experiences.</h1>
+    <p class="hero-text">I design and build responsive websites with HTML, CSS and JavaScript — focused on clarity, performance and detail.</p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <p class="eyebrow">About</p>
+    <h2>Who I Am</h2>
+    <p class="about-text">
+      
+  I love transforming creative ideas into clean and responsive web experiences.
+  My toolkit includes HTML, CSS, JavaScript, and Git. I'm always learning new
+  technologies, experimenting with modern design trends, and challenging myself
+  with exciting frontend projects.
+
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section section-alt">
+  <div class="section-inner">
+    <p class="eyebrow">Skills</p>
+    <h2>What I Work With</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>HTML</h3>
+        <div class="bar"><div class="bar-fill" style="width: 90%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <h3>CSS</h3>
+        <div class="bar"><div class="bar-fill" style="width: 80%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <h3>JavaScript</h3>
+        <div class="bar"><div class="bar-fill" style="width: 70%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <h3>Responsive Design</h3>
+        <div class="bar"><div class="bar-fill" style="width: 85%;"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="section-inner">
+    <p class="eyebrow">Projects</p>
+    <h2>Things I've Built</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-thumb">01</div>
+        <h3>Student Registration Form</h3>
+        <p>A clean form with validation built using HTML and CSS.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">02</div>
+        <h3>Landing Page</h3>
+        <p>A responsive landing page with hero section and CTA buttons.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">03</div>
+        <h3>This Portfolio</h3>
+        <p>A personal portfolio site with navbar, smooth scroll and animations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section section-alt">
+  <div class="section-inner">
+    <p class="eyebrow">Contact</p>
+    <h2>Get In Touch</h2>
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+      <input type="text" name="subject" placeholder="Subject" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2026 komal vaidya. Built with HTML, CSS & JS.</p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" class="scroll-top" aria-label="Scroll to top">&uarr;</button>
+
+<script src="script.js"></script>
+</body>
+</html>
+// ===== NAVBAR SCROLL EFFECT =====
+const navbar = document.getElementById('navbar');
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+
+  // Show/hide scroll-to-top button
+  if (window.scrollY > 400) {
+    scrollTopBtn.classList.add('visible');
+  } else {
+    scrollTopBtn.classList.remove('visible');
+  }
+
+  highlightActiveLink();
+});
+
+// ===== HAMBURGER MENU TOGGLE =====
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Close menu when a link is clicked (mobile)
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});
+
+// ===== ACTIVE LINK ON SCROLL =====
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-link');
+
+function highlightActiveLink() {
+  let currentSection = '';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.scrollY >= sectionTop) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === `#${currentSection}`) {
+      item.classList.add('active');
+    }
+  });
+}
+
+// ===== SCROLL TO TOP =====
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ===== CONTACT FORM (NO BACKEND - mailto) =====
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = this.name.value;
+  const email = this.email.value;
+  const subject = this.subject.value;
+  const message = this.message.value;
+
+  const body = `Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message}`;
+  const mailtoLink = `mailto:youremail@example.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+  window.location.href = mailtoLink;
+});
+// ===== NAVBAR SCROLL EFFECT =====
+const navbar = document.getElementById('navbar');
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+
+  // Show/hide scroll-to-top button
+  if (window.scrollY > 400) {
+    scrollTopBtn.classList.add('visible');
+  } else {
+    scrollTopBtn.classList.remove('visible');
+  }
+
+  highlightActiveLink();
+});
+
+// ===== HAMBURGER MENU TOGGLE =====
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Close menu when a link is clicked (mobile)
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});
+
+// ===== ACTIVE LINK ON SCROLL =====
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-link');
+
+function highlightActiveLink() {
+  let currentSection = '';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.scrollY >= sectionTop) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === `#${currentSection}`) {
+      item.classList.add('active');
+    }
+  });
+}
+
+// ===== SCROLL TO TOP =====
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ===== CONTACT FORM (NO BACKEND - mailto) =====
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = this.name.value;
+  const email = this.email.value;
+  const subject = this.subject.value;
+  const message = this.message.value;
+
+  const body = `Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message}`;
+  const mailtoLink = `mailto:youremail@example.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+  window.location.href = mailtoLink;
+});
